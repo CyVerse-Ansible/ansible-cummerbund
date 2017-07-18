@@ -1,6 +1,6 @@
 # ansible-cufflinks
 
-Installs [Cufflinks](https://cole-trapnell-lab.github.io/cufflinks/)
+Installs [CummeRbund](http://compbio.mit.edu/cummeRbund/manual_2_0.html)
 
 ### Role Variables
 
