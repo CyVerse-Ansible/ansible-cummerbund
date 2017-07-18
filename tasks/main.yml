@@ -1,0 +1,45 @@
+---
+
+- name: Install dependencies (ubuntu)
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "sqlite"
+    - "r-base"
+    - "r-cran-rsqlite"
+    - "r-cran-ggplot2"
+    - "r-cran-reshape2"
+    - "r-cran-plyr"
+    - "r-cran-fastcluster"
+    - "r-bioc-rtracklayer"
+    - "r-bioc-gviz"
+    - "r-bioc-biocgenerics"
+    - "r-cran-hmisc"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install yum dependencies (centos)
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "R-core"
+
+- name: Install R dependencies (centos)
+  command: >
+    R -e "install.packages('{{ item }}', repos='http://cran.stat.ucla.edu/')"
+  with_items:
+    - "plyr"
+    - "ggplot2"
+    - "reshape2"
+    - "RSQLite"
+    - "fastcluster"
+    - "rtracklayer"
+    - "Gviz"
+    - "BiocGenerics"
+    - "Hmisc"
+  when: ansible_distribution == "CentOS"
+
+- name: Install biocLite
+  command: >
+     /usr/bin/R -e "source('https://bioconductor.org/biocLite.R'); biocLite('cummeRbund')"
