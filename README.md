@@ -1,4 +1,4 @@
-# ansible-cufflinks
+# ansible-cummerbund
 
 Installs [CummeRbund](http://compbio.mit.edu/cummeRbund/manual_2_0.html)
 
